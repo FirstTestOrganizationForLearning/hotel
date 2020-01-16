@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fntx</groupId>
+    <artifactId>Fn_SpringCloud_Project</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>b2b_admin</module>
+        <module>b2b_common</module>
+        <module>b2b_order</module>
+        <module>b2b_pay</module>
+        <module>b2b_sdk</module>
+        <module>b2b_search</module>
+        <module>b2b_web</module>
+        <module>configServer</module>
+        <module>monitor</module>
+        <module>eurekaServer</module>
+        <module>zuulServer</module>
+    </modules>
+</project>

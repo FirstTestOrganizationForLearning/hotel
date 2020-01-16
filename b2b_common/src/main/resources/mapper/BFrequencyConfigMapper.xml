@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fntx.common.dao.BFrequencyConfigMapper">
+
+    <resultMap id="BaseResultMap" type="com.fntx.common.domain.BFrequencyConfig">
+        <id column="COMPID" property="compid" jdbcType="VARCHAR"/>
+        <id column="SID" property="sid" jdbcType="VARCHAR"/>
+        <result column="BASE_PRICE" property="basePrice" jdbcType="BIGINT"/>
+        <result column="DIRECT_PRICE" property="directPrice" jdbcType="BIGINT"/>
+        <result column="IS_BOOKROOM" property="isBookroom" jdbcType="BIGINT"/>
+        <result column="CREATE_ORDER" property="createOrder" jdbcType="BIGINT"/>
+        <result column="SUBMIT_ORDER" property="submitOrder" jdbcType="BIGINT"/>
+        <result column="PAY_RESULT" property="payResult" jdbcType="BIGINT"/>
+        <result column="ORDERSTATUS_CHANGE" property="orderstatusChange" jdbcType="BIGINT"/>
+        <result column="ORDER_DETAIL" property="orderDetail" jdbcType="BIGINT"/>
+        <result column="CANCEL_ORDER" property="cancelOrder" jdbcType="BIGINT"/>
+        <result column="IS_EXCEED" property="isExceed" jdbcType="BIGINT"/>
+        <result column="CHARG_STANDARD" property="chargStandard" jdbcType="DOUBLE"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        COMPID
+        , SID
+        , BASE_PRICE
+        , DIRECT_PRICE
+        , IS_BOOKROOM
+        , CREATE_ORDER
+        , SUBMIT_ORDER
+        , PAY_RESULT
+        , ORDERSTATUS_CHANGE
+        , ORDER_DETAIL
+        , CANCEL_ORDER
+        , IS_EXCEED
+        , CHARG_STANDARD
+        , CREATE_TIME
+        , UPDATE_TIME
+    </sql>
+
+    <select id="selectLists" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from B_FREQUENCY_CONFIG
+    </select>
+</mapper>

@@ -1,0 +1,54 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 20
+server:
+  port: 8762
+spring:
+  application:
+    name: configServer
+  cloud:
+    config:
+      server:
+        svn:
+          uri: svn://182.92.97.108/fntx/configRepo/
+          username: huqingkang
+          password: huqingkang123
+        default-label: dev
+  profiles:
+    active: subversion
+#注册中心信息
+info:
+  app:
+    name: 配置中心
+#监控中心相关配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"       #过滤监控中心能监控的项目
+  endpoint:
+    health:
+      show-details: ALWAYS #管理端点健康状况显示详细信息
+# code.aliyun.com仓库配置
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://code.aliyun.com/######.git
+#          search-paths: dev
+#          username: ######
+#          password: ######
+#          default-label: master
+#          basedir: tmp
+#          force-pull: true
+#申明本地配置文件的存放位置
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: file:D:\\IdeaProject\\fntx\\configRepo

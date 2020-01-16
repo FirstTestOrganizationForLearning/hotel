@@ -1,0 +1,41 @@
+2019-09-17 15:23:59.046  INFO 5472 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5aaab33e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 15:24:00.770  INFO 5472 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
+2019-09-17 15:24:01.989  INFO 5472 --- [main] c.c.c.ConfigServicePropertySourceLocator : Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
+2019-09-17 15:24:01.989  WARN 5472 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/b2bAdmin/dev": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2019-09-17 15:24:02.009  INFO 5472 --- [main] com.fntx.admin.AdminApplicationTests     : The following profiles are active: dev
+2019-09-17 15:24:05.579  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-17 15:24:05.582  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-17 15:24:05.809  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132ms. Found 0 repository interfaces.
+2019-09-17 15:24:05.839  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-17 15:24:05.843  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-17 15:24:06.092  INFO 5472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-17 15:24:06.334  WARN 5472 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-09-17 15:24:07.116  INFO 5472 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6fea5242-dafd-3fce-84d1-296f0c9a8eb0
+2019-09-17 15:24:07.681  INFO 5472 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3e90b041] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 15:24:07.871  INFO 5472 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5aaab33e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-17 15:24:11.525  WARN 5472 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BPhysicalRoom.
+2019-09-17 15:24:11.591  WARN 5472 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BSaleRoom.
+2019-09-17 15:24:12.094  WARN 5472 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BHotelList.
+2019-09-17 15:24:12.143  WARN 5472 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeDetail.
+2019-09-17 15:24:12.209  WARN 5472 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeInfo.
+2019-09-17 15:24:12.410  INFO 5472 --- [main] c.f.a.controller.APIConfigController     : 
+***************************************
+start frequencyConfigInit
+分销商请求频次初始化
+
+********************************************
+2019-09-17 15:24:12.711  INFO 5472 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-17 15:24:12.720  WARN 5472 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2019-09-17 15:24:14.699  INFO 5472 --- [main] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-09-17 15:24:14.714  INFO 5472 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-17 15:24:15.493  INFO 5472 --- [main] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2019-09-17 15:24:15.496  INFO 5472 --- [main] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2019-09-17 15:24:17.874  INFO 5472 --- [main] c.f.a.controller.APIConfigController     : 
+***************************************
+end 分销商请求频次初始化
+消息队列
+
+********************************************
+2019-09-17 15:24:20.142  INFO 5472 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[39.100.254.13:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-09-17 15:24:20.360  INFO 5472 --- [cluster-ClusterId{value='5d808a24f350d41560ab561c', description='null'}-39.100.254.13:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:517}] to 39.100.254.13:27017
+2019-09-17 15:24:20.387  INFO 5472 --- [cluster-ClusterId{value='5d808a24f350d41560ab561c', description='null'}-39.100.254.13:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=39.100.254.13:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=21188012}

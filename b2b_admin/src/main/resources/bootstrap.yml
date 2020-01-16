@@ -1,0 +1,4 @@
+#Profile设置
+spring:
+  profiles:
+    active: dev

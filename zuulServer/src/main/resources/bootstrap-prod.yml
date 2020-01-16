@@ -1,0 +1,28 @@
+#注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#服务配置
+server:
+  port: 8760
+spring:
+  application:
+    name: gateway
+    cloud:
+      discovery:
+        enabled: true
+      config:
+        uri: http://localhost:${config.port:8762} #配置中心
+        profile: ${config.profile:dev}            #分支
+
+#负载均衡相关配置
+ribbon:
+  eager-load:
+    enabled: true #ribbon饥饿加载
+    clients: B2BADMIN,B2BSDK
+#路由配置
+zuul:
+  host:
+    connect-timeout-millis: 15000     #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000      #socket超时

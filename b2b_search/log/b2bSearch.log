@@ -1,0 +1,192 @@
+2019-09-19 16:12:26.854  INFO 10924 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$68be72f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:12:28.096  INFO 10924 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8762
+2019-09-19 16:12:31.291  INFO 10924 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=b2bSearch, profiles=[dev], label=null, version=3743, state=null
+2019-09-19 16:12:31.292  INFO 10924 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='svn://182.92.97.108/fntx/configRepo//dev/b2bSearch-dev.yml'}]}
+2019-09-19 16:12:31.422  INFO 10924 --- [main] com.fntx.search.SearchApplicationTests   : The following profiles are active: dev
+2019-09-19 16:12:33.658  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:12:33.660  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:12:33.697  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 repository interfaces.
+2019-09-19 16:12:33.719  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:12:33.721  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:12:33.748  INFO 10924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
+2019-09-19 16:12:33.949  WARN 10924 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-09-19 16:12:34.560  INFO 10924 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01638dd6-316a-3f95-be54-b60a9e444832
+2019-09-19 16:12:34.747  INFO 10924 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.fntx.search.feign.AdminFeign' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:12:35.094  INFO 10924 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4ca46ff9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:12:35.222  INFO 10924 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$68be72f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:12:38.824  INFO 10924 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[39.100.254.13:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-09-19 16:12:39.060  INFO 10924 --- [cluster-ClusterId{value='5d8338765053fc2aacc4e2b5', description='null'}-39.100.254.13:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:2581}] to 39.100.254.13:27017
+2019-09-19 16:12:39.079  INFO 10924 --- [cluster-ClusterId{value='5d8338765053fc2aacc4e2b5', description='null'}-39.100.254.13:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=39.100.254.13:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=14555008}
+2019-09-19 16:12:40.603  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BFrequencyConfig.
+2019-09-19 16:12:41.023  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BHotelList.
+2019-09-19 16:12:41.372  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BPhysicalRoom.
+2019-09-19 16:12:41.503  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BSaleRoom.
+2019-09-19 16:12:41.598  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeDetail.
+2019-09-19 16:12:41.730  WARN 10924 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeInfo.
+2019-09-19 16:12:42.742  WARN 10924 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:12:42.743  INFO 10924 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:12:42.791  INFO 10924 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@1c011855
+2019-09-19 16:12:44.140  WARN 10924 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:12:44.141  INFO 10924 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:12:45.607  INFO 10924 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:12:51.537  INFO 10924 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-09-19 16:12:51.700  INFO 10924 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-09-19 16:12:51.804  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-09-19 16:12:52.013  INFO 10924 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-09-19 16:12:52.014  INFO 10924 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-09-19 16:12:52.363  INFO 10924 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-09-19 16:12:52.364  INFO 10924 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-09-19 16:12:52.838  INFO 10924 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-09-19 16:12:53.303  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-09-19 16:12:53.304  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-09-19 16:12:53.305  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-09-19 16:12:53.305  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-09-19 16:12:53.306  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-09-19 16:12:53.306  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-09-19 16:12:53.306  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-09-19 16:12:53.630  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-09-19 16:12:53.638  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 10
+2019-09-19 16:12:53.643  INFO 10924 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-09-19 16:12:53.653  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1568880773651 with initial instances count: 3
+2019-09-19 16:12:53.666  INFO 10924 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application B2BSEARCH with eureka with status UP
+2019-09-19 16:12:53.667  INFO 10924 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568880773667, current=UP, previous=STARTING]
+2019-09-19 16:12:53.701  INFO 10924 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:12:53.726  INFO 10924 --- [main] com.fntx.search.SearchApplicationTests   : Started SearchApplicationTests in 29.948 seconds (JVM running for 31.76)
+2019-09-19 16:12:54.120  INFO 10924 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:12:54.490  INFO 10924 --- [Thread-5] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application B2BSEARCH with eureka with status DOWN
+2019-09-19 16:12:54.491  WARN 10924 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568880774491, current=DOWN, previous=UP]
+2019-09-19 16:12:54.498  INFO 10924 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:12:54.505  INFO 10924 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:12:54.512  INFO 10924 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:12:54.550  INFO 10924 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-09-19 16:12:57.551  INFO 10924 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-09-19 16:12:57.603  INFO 10924 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - deregister  status: 200
+2019-09-19 16:12:57.639  INFO 10924 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-09-19 16:38:22.003  INFO 12508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$55c06b18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:38:23.064  INFO 12508 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8762
+2019-09-19 16:38:24.926  INFO 12508 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=b2bSearch, profiles=[dev], label=null, version=3743, state=null
+2019-09-19 16:38:24.927  INFO 12508 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='svn://182.92.97.108/fntx/configRepo//dev/b2bSearch-dev.yml'}]}
+2019-09-19 16:38:25.026  INFO 12508 --- [main] com.fntx.search.SearchApplicationTests   : The following profiles are active: dev
+2019-09-19 16:38:26.938  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:38:26.943  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:38:26.988  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32ms. Found 0 repository interfaces.
+2019-09-19 16:38:27.014  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:38:27.017  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:38:27.047  INFO 12508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
+2019-09-19 16:38:27.304  WARN 12508 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-09-19 16:38:27.909  INFO 12508 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01638dd6-316a-3f95-be54-b60a9e444832
+2019-09-19 16:38:28.029  INFO 12508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.fntx.search.feign.AdminFeign' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:38:28.242  INFO 12508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39a6681b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:38:28.334  INFO 12508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$55c06b18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:38:31.405  INFO 12508 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[39.100.254.13:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-09-19 16:38:31.616  INFO 12508 --- [cluster-ClusterId{value='5d833e875053fc30dc7f69e6', description='null'}-39.100.254.13:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:2638}] to 39.100.254.13:27017
+2019-09-19 16:38:31.638  INFO 12508 --- [cluster-ClusterId{value='5d833e875053fc30dc7f69e6', description='null'}-39.100.254.13:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=39.100.254.13:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=15858028}
+2019-09-19 16:38:33.104  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BFrequencyConfig.
+2019-09-19 16:38:33.579  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BHotelList.
+2019-09-19 16:38:33.901  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BPhysicalRoom.
+2019-09-19 16:38:33.956  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BSaleRoom.
+2019-09-19 16:38:34.015  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeDetail.
+2019-09-19 16:38:34.068  WARN 12508 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeInfo.
+2019-09-19 16:38:35.037  WARN 12508 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:38:35.038  INFO 12508 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:38:35.079  INFO 12508 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@238ad211
+2019-09-19 16:38:36.128  WARN 12508 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:38:36.129  INFO 12508 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:38:37.986  INFO 12508 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:38:45.302  INFO 12508 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-09-19 16:38:45.557  INFO 12508 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-09-19 16:38:45.926  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-09-19 16:38:46.202  INFO 12508 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-09-19 16:38:46.203  INFO 12508 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-09-19 16:38:47.024  INFO 12508 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-09-19 16:38:47.026  INFO 12508 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-09-19 16:38:47.478  INFO 12508 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-09-19 16:38:47.924  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-09-19 16:38:47.924  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-09-19 16:38:47.925  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-09-19 16:38:47.925  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-09-19 16:38:47.925  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-09-19 16:38:47.925  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-09-19 16:38:47.926  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-09-19 16:38:48.265  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-09-19 16:38:48.274  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 10
+2019-09-19 16:38:48.279  INFO 12508 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-09-19 16:38:48.293  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1568882328286 with initial instances count: 3
+2019-09-19 16:38:48.306  INFO 12508 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application B2BSEARCH with eureka with status UP
+2019-09-19 16:38:48.307  INFO 12508 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568882328307, current=UP, previous=STARTING]
+2019-09-19 16:38:48.364  INFO 12508 --- [main] com.fntx.search.SearchApplicationTests   : Started SearchApplicationTests in 29.084 seconds (JVM running for 31.112)
+2019-09-19 16:38:48.376  INFO 12508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:38:48.521  INFO 12508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:38:48.958  INFO 12508 --- [Thread-5] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application B2BSEARCH with eureka with status DOWN
+2019-09-19 16:38:48.959  WARN 12508 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568882328959, current=DOWN, previous=UP]
+2019-09-19 16:38:48.972  INFO 12508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:38:48.977  INFO 12508 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:38:48.990  INFO 12508 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:38:49.057  INFO 12508 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-09-19 16:38:52.059  INFO 12508 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-09-19 16:38:52.076  INFO 12508 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - deregister  status: 200
+2019-09-19 16:38:52.114  INFO 12508 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-09-19 16:43:41.059  INFO 6104 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$55c06b18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:43:42.123  INFO 6104 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8762
+2019-09-19 16:43:44.055  INFO 6104 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=b2bSearch, profiles=[dev], label=null, version=3743, state=null
+2019-09-19 16:43:44.056  INFO 6104 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='svn://182.92.97.108/fntx/configRepo//dev/b2bSearch-dev.yml'}]}
+2019-09-19 16:43:44.156  INFO 6104 --- [main] com.fntx.search.SearchApplicationTests   : The following profiles are active: dev
+2019-09-19 16:43:46.219  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:43:46.222  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:43:46.265  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30ms. Found 0 repository interfaces.
+2019-09-19 16:43:46.292  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-19 16:43:46.296  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 16:43:46.321  INFO 6104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 repository interfaces.
+2019-09-19 16:43:46.571  WARN 6104 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-09-19 16:43:47.210  INFO 6104 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=01638dd6-316a-3f95-be54-b60a9e444832
+2019-09-19 16:43:47.389  INFO 6104 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.fntx.search.feign.AdminFeign' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:43:47.660  INFO 6104 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39a6681b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:43:47.784  INFO 6104 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$55c06b18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 16:43:51.080  INFO 6104 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[39.100.254.13:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2019-09-19 16:43:52.632  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BFrequencyConfig.
+2019-09-19 16:43:53.143  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BHotelList.
+2019-09-19 16:43:53.431  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BPhysicalRoom.
+2019-09-19 16:43:53.496  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BSaleRoom.
+2019-09-19 16:43:53.575  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeDetail.
+2019-09-19 16:43:53.635  WARN 6104 --- [main] c.b.m.core.metadata.TableInfoHelper      : Warn: Could not find @TableId in Class: com.fntx.common.domain.BStaticChangeInfo.
+2019-09-19 16:43:54.338  INFO 6104 --- [cluster-ClusterId{value='5d833fc75053fc17d838895d', description='null'}-39.100.254.13:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:2640}] to 39.100.254.13:27017
+2019-09-19 16:43:54.382  INFO 6104 --- [cluster-ClusterId{value='5d833fc75053fc17d838895d', description='null'}-39.100.254.13:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=39.100.254.13:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 10]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=30103791}
+2019-09-19 16:43:54.622  WARN 6104 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:43:54.623  INFO 6104 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:43:54.658  INFO 6104 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@238ad211
+2019-09-19 16:43:56.077  WARN 6104 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-09-19 16:43:56.077  INFO 6104 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-09-19 16:43:57.276  INFO 6104 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:44:03.112  INFO 6104 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-09-19 16:44:03.249  INFO 6104 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-09-19 16:44:03.350  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-09-19 16:44:03.482  INFO 6104 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-09-19 16:44:03.483  INFO 6104 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-09-19 16:44:03.727  INFO 6104 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-09-19 16:44:03.727  INFO 6104 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-09-19 16:44:04.298  INFO 6104 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-09-19 16:44:04.774  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-09-19 16:44:04.775  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-09-19 16:44:04.775  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-09-19 16:44:04.775  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-09-19 16:44:04.775  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-09-19 16:44:04.775  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-09-19 16:44:04.776  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-09-19 16:44:05.036  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-09-19 16:44:05.041  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 10
+2019-09-19 16:44:05.048  INFO 6104 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-09-19 16:44:05.058  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1568882645055 with initial instances count: 3
+2019-09-19 16:44:05.072  INFO 6104 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application B2BSEARCH with eureka with status UP
+2019-09-19 16:44:05.073  INFO 6104 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568882645073, current=UP, previous=STARTING]
+2019-09-19 16:44:05.091  INFO 6104 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:44:05.134  INFO 6104 --- [main] com.fntx.search.SearchApplicationTests   : Started SearchApplicationTests in 26.614 seconds (JVM running for 28.27)
+2019-09-19 16:44:05.196  INFO 6104 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:44:05.931  INFO 6104 --- [Thread-5] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application B2BSEARCH with eureka with status DOWN
+2019-09-19 16:44:05.932  WARN 6104 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1568882645932, current=DOWN, previous=UP]
+2019-09-19 16:44:05.942  INFO 6104 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763: registering service...
+2019-09-19 16:44:05.943  INFO 6104 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-19 16:44:05.958  INFO 6104 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - registration status: 204
+2019-09-19 16:44:06.005  INFO 6104 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-09-19 16:44:09.006  INFO 6104 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-09-19 16:44:09.017  INFO 6104 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_B2BSEARCH/ThinkPad-PC:b2bSearch:8763 - deregister  status: 200
+2019-09-19 16:44:09.038  INFO 6104 --- [Thread-5] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

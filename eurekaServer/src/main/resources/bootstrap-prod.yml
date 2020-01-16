@@ -1,0 +1,13 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false    #默认true，单机环境设置为false，表示不向注册中心注册自己
+    fetchRegistry: false         #默认true，单机环境设置为false，表示不需要向注册中心检索自己
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+  server:
+    eviction-interval-timer-in-ms: 30000

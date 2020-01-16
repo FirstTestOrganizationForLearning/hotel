@@ -1,0 +1,78 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 20
+server:
+  port: 8764
+spring:
+  application:
+    name: b2bSdk
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      uri: http://localhost:${config.port:8762}
+      profile: ${config.profile:dev}
+  redis:
+    database: 0
+    host: 39.100.254.13
+    password: redis@fetxCtripApi
+    port: 6379
+    jedis:
+      pool:
+         # 连接池最大连接数（使用负值表示没有限制）
+         max-active: 2000
+         # 连接池最大阻塞等待时间（使用负值表示没有限制）
+         max-wait: 10000
+         # 连接池中的最大空闲连接
+         max-idle: 500
+         # 连接池中的最小空闲连接
+         min-idle: 8
+    timeout: 5000
+  session:
+    store-type: redis
+  output:
+      ansi:
+        #控制台开启彩色日志显示
+        enabled: DETECT
+
+logging:
+    #设置各包下的日志等级
+    level:
+        com:
+            fntx:
+                sdk:
+                  controller: DEBUG
+                  mapper: DEBUG
+                  service: DEBUG
+                  model: DEBUG
+    #日志导出到文件  名为logback   路径为当前项目下的相对路径
+    file: log/b2bSdk.log
+
+ribbon:
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+  ReadTimeout: 30000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 30000 #ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
+
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #断路器超时时间，默认1000ms
+
+feign:
+ hystrix:
+  enabled: true
+
+

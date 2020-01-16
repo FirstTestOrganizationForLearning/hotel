@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fntx.common.dao.BHotelRoomPriceInfosMapper">
+
+    <resultMap id="BaseResultMap" type="com.fntx.common.domain.BHotelRoomPriceInfos">
+        <id column="HOTEL_ID"  property="hotelId" />
+        <result column="ROOM_ID"  property="roomId" />
+        <result column="ROOM_TYPE_ID" property="roomTypeId" />
+        <result column="ROOM_NAME" property="roomName" />
+        <result column="CANCEL_POLICY_INFOS" property="cancelPolicyInfos" />
+        <result column="RESERVE_TIME_LIMIT_INFO" property="reserveTimeLimitInfo" />
+        <result column="HOLD_DEADLINE" property="holdDeadline" />
+        <result column="LASTSYNCTIME" property="lastsynctime" />
+        <result column="ADULT" property="adult" />
+      </resultMap>
+
+    <resultMap id="BaseResultRoomPriceItemsMap" type="com.fntx.common.domain.dto.RoomPriceItemsDto">
+        <result column="RoomTypeID"  property="RoomTypeID" />
+        <collection  property="RoomPriceInfos" column="RoomPriceInfos" ofType="com.fntx.common.domain.dto.RoomPriceInfosBeanDto">
+            <result column="CancelPolicyInfos" property="CancelPolicyInfos"/>
+            <result column="ReserveTimeLimitInfo" property="ReserveTimeLimitInfo" />
+            <result column="HoldDeadline" property="HoldDeadline" />
+            <result column="RoomID" property="RoomID" />
+            <result column="RoomName" property="RoomName" />
+            <collection  property="PriceInfos" column="PriceInfos" ofType="com.fntx.common.domain.dto.PriceInfosBeanDto">
+                <result column="PayType" property="PayType"/>
+                <result column="RatePlanCategory" property="RatePlanCategory" />
+                <result column="IsCanReserve" property="IsCanReserve" />
+                <result column="IsGuarantee" property="IsGuarantee" />
+                <result column="IsInstantConfirm" property="IsInstantConfirm" />
+                <result column="RemainingRooms" property="RemainingRooms" />
+                <result column="BookingCode" property="BookingCode" />
+                <result column="RatePlanID" property="RatePlanID" />
+                <result column="IsPromotion" property="IsPromotion" />
+                <result column="Prices" property="Prices" />
+                <result column="Taxes" property="Taxes" />
+                <result column="Fees" property="Fees" />
+           </collection >
+       </collection >
+      </resultMap>
+
+<!--    指定酒店下可用房型详情封装-->
+    <select id="getRoomPriceItemsList" resultMap="BaseResultRoomPriceItemsMap" parameterType="map">
+        select
+            bhrpi.ROOM_TYPE_ID RoomTypeID,
+            bhrpi.CANCEL_POLICY_INFOS CancelPolicyInfos,
+            bhrpi.RESERVE_TIME_LIMIT_INFO ReserveTimeLimitInfo,
+            bhrpi.HOLD_DEADLINE HoldDeadline,
+            bhrpi.ROOM_ID RoomID,
+            bhrpi.ROOM_NAME RoomName,
+            bhpi.PAY_TYPE PayType,
+            bhpi.RATE_PLAN_CATEGORY RatePlanCategory,
+            bhpi.IS_CAN_RESERVE IsCanReserve,
+            bhpi.IS_GUARANTEE IsGuarantee,
+            bhpi.IS_INSTANT_CONFIRM IsInstantConfirm,
+            bhpi.REMAINING_ROOMS RemainingRooms,
+            bhpi.BOOKING_CODE BookingCode,
+            bhpi.RATE_PLAN_ID RatePlanID,
+            bhpi.IS_PROMOTION IsPromotion,
+            bhpi.PRICES Prices,
+            bhpi.TAXES Taxes,
+            bhpi.FEES Fees
+        from B_HOTEL_ROOM_PRICE_INFOS bhrpi
+        join B_HOTEL_PRICE_INFOS bhpi on bhrpi.ROOM_ID = bhpi.ROOM_ID
+        <where>
+            bhrpi.HOTEL_STATUS = 1 and bhrpi.ROOM_STATUS = 1
+            <if test="Adult != null and Adult != '' and Adult != 'null'">
+                and bhrpi.ADULT >= #{Adult}
+            </if>
+            <if test="HotelID != null and HotelID != '' and HotelID != 'null'">
+                and bhrpi.HOTEL_ID = #{HotelID}
+            </if>
+        </where>
+    </select>
+<!--   指定酒店下可用房型id列表-->
+    <select id="getRoomIdList" resultType="Integer" parameterType="map">
+        select
+            ROOM_ID
+        from B_HOTEL_ROOM_PRICE_INFOS
+        <where>
+            HOTEL_STATUS = 1 and ROOM_STATUS = 1
+            <if test="Adult != null and Adult != ''">
+                and ADULT >= #{Adult}
+            </if>
+            <if test="HotelID != null and HotelID != ''">
+                and HOTEL_ID = #{HotelID}
+            </if>
+        </where>
+    </select>
+
+<!--    判断指定酒店下的数据是否为最新的.  即起始数据是否为当前月.-->
+    <select id="getHotelRoomNumber" resultType="int" parameterType="map">
+        SELECT
+            COUNT(bhdp.ROOM_ID)
+        FROM
+            B_HOTEL_ROOM_PRICE_INFOS bhrpi
+        JOIN B_HOTEL_DAILY_PRICES bhdp ON
+            bhrpi.ROOM_ID = bhdp.ROOM_ID
+        <where>
+            <if test="CurrentMonth != null and CurrentMonth != ''">
+                and bhdp.CURRENT_MONTH = #{CurrentMonth}
+            </if>
+            <if test="HotelID != null and HotelID != ''">
+                and bhrpi.HOTEL_ID = #{HotelID}
+            </if>
+        </where>
+    </select>
+</mapper>

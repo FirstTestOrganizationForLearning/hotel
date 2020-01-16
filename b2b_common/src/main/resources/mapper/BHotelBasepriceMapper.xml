@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fntx.common.dao.BHotelBasepriceMapper">
+    <resultMap id="BaseResultMap" type="com.fntx.common.domain.BHotelBaseprice">
+        <id column="HOTEL_ID"  property="hotelId" />
+        <result column="ROOM_ID"  property="roomId" />
+        <result column="CITY_ID" property="cityId" />
+        <result column="MIN_PRICE" property="minPrice" />
+        <result column="MIN_PRICE_ORIGINAL_CURRENCY" property="minPriceOriginalCurrency" />
+        <result column="ORIGINAL_CURRENCY" property="originalCurrency" />
+        <result column="IS_JUSTIFY_CONFIRM" property="isJustifyConfirm" />
+        <result column="PAYMENT_TYPE" property="paymentType" />
+        <result column="FILTER_ROOM_BY_PERSON" property="filterRoomByPerson" />
+        <result column="SEARCH_TYPE" property="searchType" />
+        <result column="CHILDREN_AGE_LIST" property="childrenAgeList" />
+        <result column="CHILDREN_NUMBER_LIST" property="childrenNumberList" />
+        <result column="CITY_NAME" property="childrenAgeList" />
+        <result column="CITY_ENAME" property="childrenNumberList" />
+      </resultMap>
+      <sql id="Base_Column_List">
+        HOTEL_ID, ROOM_ID, CITY_ID, MIN_PRICE, MIN_PRICE_ORIGINAL_CURRENCY, ORIGINAL_CURRENCY, IS_JUSTIFY_CONFIRM
+        ,PAYMENT_TYPE, FILTER_ROOM_BY_PERSON, SEARCH_TYPE, CHILDREN_AGE_LIST, CHILDREN_NUMBER_LIST, CITY_NAME,
+            CITY_ENAME
+      </sql>
+
+    <resultMap id="BaseResultHotelBasepriceDtoMap" type="com.fntx.common.domain.dto.HotelDataLists">
+        <association  property="hotelStatusEntity" column="HotelStatusEntity"
+                      javaType="com.fntx.common.domain.dto.HotelStatusEntityBean">
+            <result column="Hotel" property="Hotel" />
+            <result column="MinPrice" property="MinPrice"  />
+            <result column="MinPrice_MyCurrency" property="MinPrice_MyCurrency" />
+            <result column="Currency_minPrice" property="Currency_minPrice" />
+            <result column="MinPriceRoom" property="MinPriceRoom"  />
+            <association  property="MinPriceInfoEntity" column="MinPriceInfoEntity"
+                      javaType="com.fntx.common.domain.dto.MinPriceInfoEntityBean">
+                <association  property="MinPrice_AfterTax" column="MinPrice_AfterTax"
+                      javaType="com.fntx.common.domain.dto.MinPriceAfterTaxBean">
+                    <association  property="MinPrice_CashBack" column="MinPrice_CashBack"
+                      javaType="com.fntx.common.domain.dto.MinPriceCashBackBean">
+                        <result column="MinPrice_1" property="MinPrice"  />
+                        <result column="MinPrice_OriginalCurrency" property="MinPrice_OriginalCurrency"/>
+                        <result column="OriginalCurrency" property="OriginalCurrency"  />
+                        <result column="MinPrice_RoomID" property="MinPrice_RoomID" />
+                    </association >
+                </association >
+            </association >
+        </association >
+      </resultMap>
+
+
+    <!--根据条件获取起价信息-->
+    <select id="getBHotelBasepriceList" resultMap="BaseResultHotelBasepriceDtoMap" parameterType="Map">
+        SELECT
+            BHD.HOTEL_ID Hotel,
+            BHD.MINPRICE MinPrice_MyCurrency,
+            BHD.MINPRICERMB MinPrice,
+            BHD.MINPRICECURRENCY Currency_minPrice,
+            BHD.MINPRICEROOMID MinPriceRoom,
+            BHB.MIN_PRICE MinPrice_1,
+            BHB.MIN_PRICE_ORIGINAL_CURRENCY MinPrice_OriginalCurrency,
+            BHB.ORIGINAL_CURRENCY OriginalCurrency,
+            BHB.ROOM_ID
+        FROM
+            B_HOTEL_BASEPRICE BHB
+            JOIN B_HOTEL_DETAIL BHD ON BHB.HOTEL_ID = BHD.HOTEL_ID
+        <where>
+            <if test="SEARCH_TYPE != null and SEARCH_TYPE != '' and SEARCH_TYPE != 'null'" >
+                and BHB.SEARCH_TYPE = #{SEARCH_TYPE}
+            </if>
+            <if test="CITY_ID != null and CITY_ID != ''">
+                and BHB.CITY_ID = #{CITY_ID}
+            </if>
+            <if test="HOTEL_ID != null and HOTEL_ID != ''">
+                and BHB.HOTEL_ID in #{HOTEL_ID}
+            </if>
+            <if test="FILTER_ROOM_BY_PERSON != null and FILTER_ROOM_BY_PERSON != ''">
+                and BHB.FILTER_ROOM_BY_PERSON = #{FILTER_ROOM_BY_PERSON}
+            </if>
+            <if test="PAYMENT_TYPE != null and PAYMENT_TYPE != '' and PAYMENT_TYPE != 'null'">
+                and BHB.PAYMENT_TYPE = #{PAYMENT_TYPE}
+            </if>
+            <if test="IS_JUSTIFY_CONFIRM != null and IS_JUSTIFY_CONFIRM != '' and IS_JUSTIFY_CONFIRM != 'null'">
+                and BHB.IS_JUSTIFY_CONFIRM = #{IS_JUSTIFY_CONFIRM}
+            </if>
+            <if test="CHILDREN_NUMBER_LIST != null and CHILDREN_NUMBER_LIST != ''">
+                and BHB.CHILDREN_NUMBER_LIST = #{CHILDREN_NUMBER_LIST}
+            </if>
+            <if test="maxAge != null and maxAge != ''">
+                and BHB.CHILD_MAXAGE &gt; #{maxAge}
+            </if>
+            <if test="minAge != null and minAge != ''">
+                and BHB.CHILD_MINAGE &lt; #{minAge}
+            </if>
+            <if test="lowPrice != null and lowPrice != ''">
+                and BHB.MIN_PRICE &gt;= #{lowPrice}
+            </if>
+            <if test="highPrice != null and highPrice != ''">
+                and BHB.MIN_PRICE &lt;= #{highPrice}
+            </if>
+        </where>
+    </select>
+
+
+    <resultMap id="BaseResultNumEntityMap" type="com.fntx.common.domain.dto.NumEntity">
+        <result column="City"  property="City" />
+        <result column="CityName"  property="CityName" />
+        <result column="CityEName" property="CityEName" />
+        <result column="CityNum" property="CityNum" />
+      </resultMap>
+    <!--根据指定条件获取其中相同的城市信息-->
+    <select id="getBHotelCityList" resultMap="BaseResultNumEntityMap" parameterType="Map">
+        SELECT
+            CITY_ID City,
+            CITY_NAME CityName,
+            CITY_ENAME CityEName,
+            #{CityNum} CityNum
+        FROM
+            B_HOTEL_BASEPRICE
+        <where>
+            <if test="SEARCH_TYPE != null and SEARCH_TYPE != '' and SEARCH_TYPE != 'null'" >
+                and SEARCH_TYPE = #{SEARCH_TYPE}
+            </if>
+            <if test="CITY_ID != null and CITY_ID != ''">
+                and CITY_ID = #{CITY_ID}
+            </if>
+            <if test="HOTEL_ID != null and HOTEL_ID != ''">
+                and HOTEL_ID in #{HOTEL_ID}
+            </if>
+            <if test="FILTER_ROOM_BY_PERSON != null and FILTER_ROOM_BY_PERSON != ''">
+                and FILTER_ROOM_BY_PERSON = #{FILTER_ROOM_BY_PERSON}
+            </if>
+            <if test="PAYMENT_TYPE != null and PAYMENT_TYPE != '' and PAYMENT_TYPE != 'null'">
+                and PAYMENT_TYPE = #{PAYMENT_TYPE}
+            </if>
+            <if test="IS_JUSTIFY_CONFIRM != null and IS_JUSTIFY_CONFIRM != '' and IS_JUSTIFY_CONFIRM != 'null'">
+                and IS_JUSTIFY_CONFIRM = #{IS_JUSTIFY_CONFIRM}
+            </if>
+            <if test="CHILDREN_NUMBER_LIST != null and CHILDREN_NUMBER_LIST != ''">
+                and CHILDREN_NUMBER_LIST = #{CHILDREN_NUMBER_LIST}
+            </if>
+            <if test="CHILDREN_AGE_LIST != null and CHILDREN_AGE_LIST != ''">
+                and CHILDREN_AGE_LIST in #{CHILDREN_AGE_LIST}
+            </if>
+            <if test="lowPrice != null and lowPrice != ''">
+                and MIN_PRICE &gt;= #{lowPrice}
+            </if>
+            <if test="highPrice != null and highPrice != ''">
+                and MIN_PRICE &lt;= #{highPrice}
+            </if>
+        </where>
+            group by CITY_ID, CITY_NAME, CITY_ENAME
+    </select>
+
+<!--    获取指定条件下的所有hotelid的String串-->
+    <select id="getBHotelBasepriceHotelStr" resultType="string" parameterType="Map">
+        SELECT
+            xmlagg(xmlparse(content HOTEL_ID||',' wellformed) order by HOTEL_ID).getclobval()
+        FROM
+            B_HOTEL_BASEPRICE
+        <where>
+            <if test="SEARCH_TYPE != null and SEARCH_TYPE != '' and SEARCH_TYPE != 'null'" >
+                and SEARCH_TYPE = #{SEARCH_TYPE}
+            </if>
+            <if test="CITY_ID != null and CITY_ID != ''">
+                and CITY_ID = #{CITY_ID}
+            </if>
+            <if test="HOTEL_ID != null and HOTEL_ID != ''">
+                and HOTEL_ID in #{HOTEL_ID}
+            </if>
+            <if test="FILTER_ROOM_BY_PERSON != null and FILTER_ROOM_BY_PERSON != ''">
+                and FILTER_ROOM_BY_PERSON = #{FILTER_ROOM_BY_PERSON}
+            </if>
+            <if test="PAYMENT_TYPE != null and PAYMENT_TYPE != '' and PAYMENT_TYPE != 'null'">
+                and PAYMENT_TYPE = #{PAYMENT_TYPE}
+            </if>
+            <if test="IS_JUSTIFY_CONFIRM != null and IS_JUSTIFY_CONFIRM != '' and IS_JUSTIFY_CONFIRM != 'null'">
+                and IS_JUSTIFY_CONFIRM = #{IS_JUSTIFY_CONFIRM}
+            </if>
+            <if test="CHILDREN_NUMBER_LIST != null and CHILDREN_NUMBER_LIST != ''">
+                and CHILDREN_NUMBER_LIST = #{CHILDREN_NUMBER_LIST}
+            </if>
+            <if test="maxAge != null and maxAge != ''">
+                and CHILD_MAXAGE &gt; #{maxAge}
+            </if>
+            <if test="minAge != null and minAge != ''">
+                and CHILD_MINAGE &lt; #{minAge}
+            </if>
+            <if test="lowPrice != null and lowPrice != ''">
+                and MIN_PRICE &gt;= #{lowPrice}
+            </if>
+            <if test="highPrice != null and highPrice != ''">
+                and MIN_PRICE &lt;= #{highPrice}
+            </if>
+        </where>
+    </select>
+</mapper>

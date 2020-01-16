@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fntx.common.dao.BStaticChangeInfoMapper">
+
+<!--    批量插入静态增量信息-->
+    <insert id="insertBstaticChangeList" parameterType="list">
+        <foreach collection="list" item="hib" index="index" open="begin" close=";end;" separator=";">
+            insert into B_STATIC_CHANGE_INFO
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="hib.changeId != null" >
+                    CHANGE_ID,
+                  </if>
+                  <if test="hib.Category != null" >
+                    CATEGORY,
+                  </if>
+                  <if test="hib.HotelID != null" >
+                    HOTEL_ID,
+                  </if>
+                  <if test="hib.RoomTypeID != null" >
+                    ROOMTYPE_ID,
+                  </if>
+                  <if test="hib.RoomID != null" >
+                    ROOM_ID,
+                  </if>
+                  <if test="hib.ChangeTime != null" >
+                    CHANGETIME,
+                  </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="hib.changeId != null" >
+                    #{hib.changeId},
+                  </if>
+                  <if test="hib.Category != null" >
+                    #{hib.Category},
+                  </if>
+                  <if test="hib.HotelID != null" >
+                    #{hib.HotelID},
+                  </if>
+                  <if test="hib.RoomTypeID != null" >
+                    #{hib.RoomTypeID},
+                  </if>
+                  <if test="hib.RoomID != null" >
+                    #{hib.RoomID},
+                  </if>
+                  <if test="hib.ChangeTime != null" >
+                    TO_DATE(#{hib.ChangeTime}, 'yyyy-MM-dd hh24:mi:ss'),
+                  </if>
+            </trim>;
+            <foreach collection="hib.ChangeDetails" item="hibs" index="index" open="begin" close="end">
+                insert into B_STATIC_CHANGE_DETAIL
+                <trim prefix="(" suffix=")" suffixOverrides="," >
+                  <if test="hibs.changedetailId != null" >
+                    CHANGEDETAIL_ID,
+                  </if>
+                  <if test="hibs.Name != null" >
+                    NAME,
+                  </if>
+                  <if test="hibs.NewValue != null" >
+                    NEWVALUE,
+                  </if>
+                  <if test="hib.changeId != null" >
+                    CHANGE_ID,
+                  </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides="," >
+                  <if test="hibs.changedetailId != null" >
+                    #{hibs.changedetailId},
+                  </if>
+                  <if test="hibs.Name != null" >
+                    #{hibs.Name},
+                  </if>
+                  <if test="hibs.NewValue != null" >
+                    #{hibs.NewValue},
+                  </if>
+                  <if test="hib.changeId != null" >
+                    #{hib.changeId},
+                  </if>
+                </trim>;
+            </foreach>
+        </foreach>
+    </insert>
+
+    <resultMap id="BaseResultHotelIncrDataDtoMap" type="com.fntx.common.domain.dto.HotelIncrDataDto">
+        <result column="CATEGORY" property="Category" />
+        <result column="HOTEL_ID" property="HotelID"  />
+        <result column="ROOMTYPE_ID" property="RoomTypeID" />
+        <result column="ROOM_ID" property="RoomID" />
+        <result column="CHANGETIME" property="ChangeTime"  />
+        <collection property="ChangeDetails" column="ChangeDetails"
+                    ofType="com.fntx.common.domain.dto.ChangeDetailsBeanMg">
+            <result column="NAME" property="Name" />
+            <result column="NEWVALUE" property="NewValue"  />
+        </collection>
+    </resultMap>
+<!--    获取增量静态数据相关分页id-->
+    <select id="selectIncrDataList" resultMap="BaseResultHotelIncrDataDtoMap" parameterType="list">
+        select
+            bsci.CATEGORY,
+            bsci.HOTEL_ID,
+            bsci.ROOMTYPE_ID,
+            bsci.ROOM_ID,
+            bsci.CHANGETIME,
+            bscd.NAME,
+            bscd.NEWVALUE
+        from
+        B_STATIC_CHANGE_INFO bsci
+        join B_STATIC_CHANGE_DETAIL bscd on bsci.CHANGE_ID = bscd.CHANGE_ID
+        <where>
+            bsci.CHANGE_ID in
+             <foreach collection="list" item="hibs" index="index" open="(" close=")" separator=",">
+                #{hibs.changeId}
+            </foreach>
+        </where>
+    </select>
+
+    <resultMap id="BaseResultHotelIncrDataMap" type="com.fntx.common.domain.dto.HotelIncrDataWarehousingDto">
+        <id column="CHANGE_ID" property="changeId" />
+        <result column="CATEGORY" property="Category" />
+        <result column="HOTEL_ID" property="HotelID"  />
+        <result column="ROOMTYPE_ID" property="RoomTypeID" />
+        <result column="ROOM_ID" property="RoomID" />
+        <result column="CHANGETIME" property="ChangeTime"  />
+    </resultMap>
+<!--    获取指定条件下分页数据-->
+    <select id="selectIncrDataListLimit" resultMap="BaseResultHotelIncrDataMap" parameterType="map">
+        select
+            bsci.CHANGE_ID,
+            bsci.CATEGORY,
+            bsci.HOTEL_ID,
+            bsci.ROOMTYPE_ID,
+            bsci.ROOM_ID,
+            bsci.CHANGETIME
+        from
+        B_STATIC_CHANGE_INFO bsci
+        join B_HOTEL_LIST bhl on bsci.HOTEL_ID = bhl.HOTEL_ID
+        <where>
+            bhl.IS_INTEL = #{IsIntel}
+            <if test="starTimeDate != null and starTimeDate != ''">
+                and bsci.CHANGETIME &gt;= TO_DATE(#{starTimeDate}, 'yyyy-MM-dd hh24:mi:ss')
+            </if>
+            <if test="endTimeDate != null and endTimeDate != ''">
+                and bsci.CHANGETIME &lt;= TO_DATE(#{endTimeDate}, 'yyyy-MM-dd hh24:mi:ss')
+            </if>
+        </where>
+    </select>
+</mapper>

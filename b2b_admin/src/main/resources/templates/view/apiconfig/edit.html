@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+
+<body>
+
+<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">* </span>分销商ID</label>
+        <div class="layui-input-inline">
+            <input id="compid"  name="compid" placeholder="请输入" lay-verify="required" autocomplete="off" class="layui-input"  disabled="true" style="background: #cccccc"></input>
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>分销商SID</label>
+        <div class="layui-input-inline">
+            <input id="sid"  name="sid" placeholder="请输入" lay-verify="required" autocomplete="off" class="layui-input"  disabled="true" style="background: #cccccc">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>起价频次</label>
+        <div class="layui-input-inline">
+            <input id="basePrice" type="text" name="basePrice" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>直连报价频次</label>
+        <div class="layui-input-inline">
+            <input id="directPrice" type="text" name="directPrice" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">* </span>房型是否可预定频次</label>
+        <div class="layui-input-inline">
+            <input id="isBookroom" type="text" name="isBookroom" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>创建订单频次</label>
+        <div class="layui-input-inline">
+            <input id="createOrder" type="text" name="createOrder" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>提交订单频次</label>
+        <div class="layui-input-inline">
+            <input id="submitOrder" type="text" name="submitOrder" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>获取支付确认结果频次</label>
+        <div class="layui-input-inline">
+            <input id="payResult" type="text" name="payResult" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">* </span>监测订单状态变化频次</label>
+        <div class="layui-input-inline">
+            <input id="orderstatusChange" type="text" name="orderstatusChange" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>获取订单详情频次</label>
+        <div class="layui-input-inline">
+            <input id="orderDetail" type="text" name="orderDetail" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>取消订单频次</label>
+        <div class="layui-input-inline">
+            <input id="cancelOrder" type="text" name="cancelOrder" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+        <label class="layui-form-label"><span style="color: red;">* </span>收费标准</label>
+        <div class="layui-input-inline">
+            <input id="chargStandard" type="text" name="chargStandard" placeholder="请输入" lay-verify="required|number" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否允许超出频率限制</label>
+        <div class="layui-input-block">
+            <input type="radio" name="isExceed" value="0" title="不允许">
+            <input type="radio" name="isExceed" value="1" title="允许">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="edit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+    <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/apiconfig/edit.js"></script>
+<script th:inline="javascript">
+<!--    回填表单-->
+    var compid = [[${configDetail.compid}]];
+    $("#compid").val(compid);
+    $("#sid").val([[${configDetail.sid}]]);
+    $("#basePrice").val([[${configDetail.basePrice}]]);
+    $("#directPrice").val([[${configDetail.directPrice}]]);
+    $("#isBookroom").val([[${configDetail.isBookroom}]]);
+    $("#createOrder").val([[${configDetail.createOrder}]]);
+    $("#submitOrder").val([[${configDetail.submitOrder}]]);
+    $("#payResult").val([[${configDetail.payResult}]]);
+    $("#orderstatusChange").val([[${configDetail.orderstatusChange}]]);
+    $("#orderDetail").val([[${configDetail.orderDetail}]]);
+    $("#cancelOrder").val([[${configDetail.cancelOrder}]]);
+    $("#chargStandard").val([[${configDetail.chargStandard}]]);
+    var youVal = [[${configDetail.isExceed}]];
+    $("input[name='isExceed']").each(function(index) {
+        if ($("input[name='isExceed']").get(index).value == youVal) {
+            $("input[name='isExceed']").get(index).checked = true;
+        }
+    });
+</script>
+</body>
+</html>

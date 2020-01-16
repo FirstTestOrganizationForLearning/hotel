@@ -1,0 +1,31 @@
+#注册中心信息
+info:
+  app:
+    name: 服务路由
+#监控中心相关配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"       #过滤监控中心能监控的项目
+  endpoint:
+    health:
+      show-details: ALWAYS #管理端点健康状况显示详细信息
+#负载均衡相关配置
+ribbon:
+  eager-load:
+    enabled: true #ribbon懒加载
+    clients: B2BADMIN,B2BSDK
+#路由配置
+zuul:
+  host:
+    connect-timeout-millis: 15000     #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000      #socket超时
+#熔断相关配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fntx.common.dao.BSaleRoomMapper">
+
+<!--    批量更新房型上下架信息-->
+    <update id="updateBSaleRoomList" parameterType="java.util.List">
+        <!-- oracle 数据库下注意foreach后需添加  open="begin" close=";end;"  如前语句  -->
+        <foreach collection="list" item="hib" index="index" open="begin" close=";end;" separator=";">
+            update B_SALE_ROOM
+            <set >
+                    <if test="hib.Status != null and hib.Status!= ''">
+                        STATUS = #{hib.Status},
+                    </if>
+                    <if test="hib.IsSupplier != null and hib.IsSupplier !=' '">
+                        IS_SHOWAGENCYTAG = #{hib.IsSupplier},
+                    </if>
+                    <if test="hib.DateChangeLastTime != null and hib.DateChangeLastTime != ''">
+                        LASTSYNC_TIME = TO_DATE(#{hib.DateChangeLastTime}, 'yyyy-MM-dd hh24:mi:ss'),
+                    </if>
+            </set>
+            where ROOM_ID = #{hib.RoomID} and HOTEL_ID = #{hib.HotelID}
+        </foreach>
+    </update>
+
+
+
+    <resultMap id="BaseResultHotelBSaleRoomDtoMap" type="com.fntx.common.domain.dto.BSaleRoomDto">
+        <result column="paytype" property="paytype" />
+        <result column="maxOccupancy" property="maxOccupancy"  />
+        <result column="isAllowBooking" property="isAllowBooking" />
+        <result column="childMaxoccupancy" property="childMaxoccupancy" />
+        <result column="childMaxage" property="childMaxage"  />
+        <result column="childMinage" property="childMinage"  />
+    </resultMap>
+<!--    获取售卖房型,物理房型指定信息列表-->
+    <select id="selectBSaleRoomType" parameterType="map" resultMap="BaseResultHotelBSaleRoomDtoMap">
+        select
+            bsr.PAYTYPE paytype,
+            bsr.MAX_OCCUPANCY maxOccupancy,
+            bsr.IS_ALLOW_BOOKING isAllowBooking,
+            bpr.CHILD_MAXOCCUPANCY childMaxoccupancy,
+            bpr.CHILD_MAXAGE childMaxage,
+            bpr.CHILD_MINAGE childMinage
+        from B_SALE_ROOM bsr join B_PHYSICAL_ROOM bpr on bsr.ROOM_TYPE_ID = bpr.ROOM_TYPE_ID
+        <where>
+            <if test="hotelId != null and hotelId != ''">
+                and bsr.HOTEL_ID = #{hotelId}
+            </if>
+            <if test="roomId != null and roomId != ''">
+                and bsr.ROOM_ID = #{roomId}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="BaseResultHotelIncrRoomtypeDtoMap" type="com.fntx.common.domain.dto.HotelIncrRoomtypeDto">
+        <result column="ROOM_ID" property="RoomID" />
+        <result column="HOTEL_ID" property="HotelID"  />
+        <result column="STATUS" property="Status" />
+        <result column="IS_SHOWAGENCYTAG" property="IsSupplier" />
+        <result column="LASTSYNC_TIME" property="DateChangeLastTime"  />
+    </resultMap>
+<!--    获取房型上下架信息-->
+    <select id="selectBSaleRoomUpDownLine" resultMap="BaseResultHotelIncrRoomtypeDtoMap" parameterType="map">
+        select
+        bsr.ROOM_ID,
+        bsr.HOTEL_ID,
+        bsr.STATUS,
+        bsr.IS_SHOWAGENCYTAG,
+        bsr.LASTSYNC_TIME
+        from B_SALE_ROOM bsr join B_HOTEL_LIST bhl on bsr.HOTEL_ID = bhl.HOTEL_ID
+        <where>
+            bhl.IS_INTEL = #{IsIntel}
+            <if test="starTimeDate != null and starTimeDate != ''">
+                and bsr.LASTSYNC_TIME &gt;= #{starTimeDate}
+            </if>
+            <if test="endTimeDate != null and endTimeDate != ''">
+                and bsr.LASTSYNC_TIME &lt;= #{endTimeDate}
+            </if>
+        </where>
+    </select>
+</mapper>

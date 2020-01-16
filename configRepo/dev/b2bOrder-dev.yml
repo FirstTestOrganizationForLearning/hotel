@@ -1,0 +1,62 @@
+#注册中心信息
+info:
+  app:
+    name: 订单服务
+#监控中心相关配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"       #过滤监控中心能监控的项目
+  endpoint:
+    health:
+      show-details: ALWAYS #管理端点健康状况显示详细信息
+spring:
+  redis:
+    database: 0
+    host: 39.100.254.13
+    password: redis@fetxCtripApi
+    port: 6379
+    jedis:
+      pool:
+        max-active: 2000
+        max-wait: 1000
+        max-idle: 500
+        min-idle: 8
+    timeout: 50000
+  session:
+    store-type: redis
+      #数据库
+  datasource:
+    url: jdbc:oracle:thin:@//39.100.254.13:1521/ORCLPDB
+    username: fn_hotel
+    password: ora123123
+    driver-class-name: oracle.jdbc.OracleDriver
+    #mybatis-plus
+mybatis-plus:
+  mapper-locations:  classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.fntx.order.domain.*
+  configuration:
+    cache-enabled: false
+#    incomplete-cache-refs: false
+    jdbc-type-for-null: null
+  global-config:
+    db-config:
+      db-type: oracle
+order:
+  status:
+    sync:
+      timer: 0 0/5 * * * ?
+      frequency: 5 #分钟 minute
+#开启熔断器
+feign:
+  hystrix:
+    enabled: true
+#设置熔断器超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
